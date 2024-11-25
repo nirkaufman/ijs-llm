@@ -1,6 +1,6 @@
-POST http://localhost:3000/search
+POST http://localhost:3000/docs
 Content-Type: application/json
 
 {
-  "prompt": "Look for a front-end developer"
+  "prompt": "Who is nir kaufman?"
 }
