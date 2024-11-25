@@ -1,6 +1,6 @@
-POST http://localhost:3000/
+POST http://localhost:3000/search
 Content-Type: application/json
 
 {
-  "query": "query { hello }"
+  "prompt": "Look for a front-end developer"
 }

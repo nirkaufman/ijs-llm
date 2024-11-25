@@ -10,6 +10,7 @@
     "nitropack": "latest"
   },
   "dependencies": {
+    "langchain": "^0.3.6",
     "openai": "^4.73.0"
   }
 }
