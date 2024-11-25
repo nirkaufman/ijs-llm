@@ -1,15 +1,16 @@
 import {MemoryVectorStore} from 'langchain/vectorstores/memory';
 import {Document} from 'langchain/document';
 import {OpenAIEmbeddings} from "@langchain/openai";
+import {Candidate, PrismaClient} from '@prisma/client'
 
-const candidates = [
-  {id: 2, name: "Alice", bio: 'I am a javaScript developer'},
-  {id: 2, name: "Bob", bio: 'I build apps with IOS'},
-  {id: 2, name: "Ruth", bio: 'I use c++ everyday'},
-]
+// Example of how to connect to a database with prisma client
+const db = new PrismaClient();
 
-const createStore = () => {
-  return MemoryVectorStore.fromDocuments(
+const createStore = async () => {
+  const candidates: Candidate[] = await db.candidate.findMany();
+  const store = MemoryVectorStore;
+
+  return store.fromDocuments(
       candidates.map((candidate) => new Document({
         pageContent: ` ${candidate.bio}`,
         metadata: {name: candidate.name},
